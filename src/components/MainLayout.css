@@ -1,0 +1,14 @@
+#main-layout {
+    margin-bottom: 26px;
+}
+
+#main-layout ul {
+    display: flex;
+    justify-content: space-around;
+}
+
+.logout {
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+}

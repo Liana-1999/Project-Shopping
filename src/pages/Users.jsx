@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Typography, Box } from "@mui/material";
 
 function Users() {
   const [users, setUsers] = useState([]);
@@ -11,35 +12,38 @@ function Users() {
       });
   }, []);
 
-  return (
-    <div style={{ padding: "16px" }}>
-      <h2>Users Page</h2>
-      <div
-        style={{
+   return (
+    <Box sx={{ p: 2 }}>
+      <Typography variant="h3" sx={{ mb: 2 }}>
+        Users
+      </Typography>
+      <Box
+        sx={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(150px, 1fr))",
-          gap: "1rem",
-          marginTop: "1rem",
+          gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
+          gap: 2,
         }}
       >
         {users.map((user) => (
-          <div
+          <Box
             key={user.id}
-            style={{
+            sx={{
               border: "1px solid #ccc",
               borderRadius: "8px",
-              padding: "8px",
+              p: 2,
+              backgroundColor: "#fff",
+              color: "#000",
             }}
           >
-            <p>
-              <strong>{user.firstName} {user.lastName}</strong>
-            </p>
-            <p>Age: {user.age}</p>
-            <p>{user.email}</p>
-          </div>
+            <Typography variant="subtitle1">
+              {user.firstName} {user.lastName}
+            </Typography>
+            <Typography variant="body2">Age: {user.age}</Typography>
+            <Typography variant="body2">{user.email}</Typography>
+          </Box>
         ))}
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 }
 

@@ -1,8 +1,7 @@
 import { useState, useContext } from 'react';
-import { Input, Button, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-
 import { AuthContext } from "../context/auth/AuthContext";
+import { Input, Button, Typography } from '@mui/material';
 
 export const SignIn = () => {
     const authContext = useContext(AuthContext);
@@ -52,8 +51,7 @@ export const SignIn = () => {
 
             <Button
                 variant="contained"
-                onClick={handleSignIn}
-            >
+                onClick={handleSignIn}>
                 Sign In
             </Button>
         </div>

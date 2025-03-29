@@ -1,8 +1,15 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom"; 
 import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, Typography, Rating } from '@mui/material';
+import { ProductDetails } from "./ProductDetails";
 
 function Products() {
+  const [isDetailsOpened, setIsDetailedOpened] = useState(false);
+
   const [products, setProducts] = useState([]);
+
+  const navigate = useNavigate();
+  const params = useParams(); 
 
   useEffect(() => {
     fetch('https://dummyjson.com/products')
@@ -12,13 +19,20 @@ function Products() {
       });
   }, []);
 
+  const handleDetailsOpen = (productId) => {
+    setIsDetailedOpened(true);
+    navigate(`/products/${product.id}`);
+  };
+
+  const handleDetailsClose = () => {
+    setIsDetailedOpened(false);
+  };
+
   console.log(products);
 
   return (
     <div>
-      <Typography variant="h3" sx={{ mb: '10px' }}>
-        Products
-      </Typography>
+      <Typography variant="h3" sx={{ mb: '10px' }}>Products</Typography>
 
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -35,6 +49,7 @@ function Products() {
           <TableBody>
             {products.map((product) => (
               <TableRow
+                onClick={() => handleDetailsOpen(product.id)}
                 key={product.id}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
@@ -53,6 +68,12 @@ function Products() {
           </TableBody>
         </Table>
       </TableContainer>
+
+      <ProductDetails 
+        productId={params.productId} 
+        open={isDetailsOpened}
+        onClose={handleDetailsClose}
+      />
     </div>
   );
 }

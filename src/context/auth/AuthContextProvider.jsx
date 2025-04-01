@@ -30,6 +30,8 @@ export const AuthContextProvider = ({ children }) => {
     };
 
     const signOut = () => {
+        console.log('sign out');
+        
         localStorage.clear();
         setAuth({ isLoggedIn: false, user: null });
     };

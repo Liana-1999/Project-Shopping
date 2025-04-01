@@ -1,19 +1,19 @@
 
 const subscriptions = [
     {
-        id: '1',
-        name: 'Premium Streaming Plan',
-        price: '$12.99',
+        id: "basic",
+        name: "Basic Plan",
+        price: "$25",
     },
     {
-        id: '2',
-        name: 'Deluxe Music Plan',
-        price: '$19.99',
+        id: "pro",
+        name: "Pro Plan",
+        price: "$75",
     },
     {
-        id: '3',
-        name: 'Fitness Plus Membership',
-        price: '$49.99',
+        id: "ultra",
+        name: "Ultra Plan",
+        price: "$100",
     }
 ];
 

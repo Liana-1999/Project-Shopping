@@ -7,8 +7,10 @@ import { useEffect } from "react";
 
 export const ProductDetails = (props) => {
   const [product, setProduct] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     fetch(`https://dummyjson.com/products/${props.productId}`)
         .then(res => res.json())
         .then((productRespose) => {
@@ -16,9 +18,9 @@ export const ProductDetails = (props) => {
           setLoading(false);
         })
         .catch(() => {
-          
+            setLoading(false);
         })
-  }, [props.product]);
+  }, [props.productId]);
   
   return (
       <Drawer
@@ -36,24 +38,24 @@ export const ProductDetails = (props) => {
       <Divider />
 
       <Box sx={{ height: 'calc(100vh -78px)' }}>
-           {true
-          ? (
-               <Box
-                  sx={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    height: '100%'
-                  }}>
-                  <CircularProgress />
-                </Box>  
-          )
-          : (
-              <>
-                 <ProductBasicInfo />
-                <ProductReviews />
-              </>
-          )
+           {loading
+            ? (
+                <Box
+                    sx={{
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      height: '100%'
+                    }}>
+                    <CircularProgress />
+                  </Box>  
+            )
+            : (
+                <>
+                  <ProductBasicInfo />
+                  <ProductReviews />
+                </>
+            )
       }
       </Box>
     </Box>

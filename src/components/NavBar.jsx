@@ -14,7 +14,7 @@ const pages = [
 
 function NavBar() {
   const navigate = useNavigate();
-  const { signOut, firstName } = useContext(AuthContext);
+  const { signOut, user } = useContext(AuthContext);
 
   const handlePageChange = (link) => {
     navigate(link);
@@ -32,7 +32,7 @@ function NavBar() {
         </Box>
         <Box sx={{ display: "flex", alignItems: "center" }}>
           <Typography variant="subtitle1" fontWeight="bold">
-            {firstName ? firstName : "Guest"}
+            {user?.firstName || "Guest"}
           </Typography>
           <Button onClick={signOut} color="inherit" sx={{ ml: 1 }}>
             <LogoutIcon />

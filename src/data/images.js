@@ -1,18 +1,15 @@
 const images = [
     {
-        id: 'image-1',
-        name: 'Image 1',
-        src: 'https://fakeimg.pl/300/'
+        id: "mars",
+        src: "https://via.placeholder.com/200x300/FF0000/FFFFFF?text=Mars",
     },
     {
-        id: 'image-2',
-        name: 'Image 2',
-        src: 'https://fakeimg.pl/300/'
+        id: "moon",
+        src: "https://via.placeholder.com/200x300/00FF00/000000?text=Moon",
     },
     {
-        id: 'image-3',
-        name: 'Image 3',
-        src: 'https://fakeimg.pl/300/'
+        id: "jupiter",
+        src: "https://via.placeholder.com/200x300/0000FF/FFFFFF?text=Jupiter",
     }
 ];
 

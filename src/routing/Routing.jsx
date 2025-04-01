@@ -21,26 +21,26 @@ export const Routing = () => {
     return (
         <BrowserRouter>
             <Routes>
+                <Route element={<PublicRoutes />}>
+                    <Route path="signin" element={<SignIn />} />
+                  </Route>
+
                 <Route path="/" element={<MainLayout />}>
-          <Route index element={<Home />} />
+                  <Route element={<PrivateRoutes />}>
+                    <Route index element={<Home />} />
 
-          <Route element={<PublicRoutes />}>
-            <Route path="signin" element={<SignIn />} />
-          </Route>
+                    <Route path="myprofile" element={<MyProfile />} />
 
-          <Route element={<PrivateRoutes />}>
-            <Route path="myprofile" element={<MyProfile />} />
-          </Route>
-
-          <Route path="products" element={<Products />} />
-          <Route path='/images' element={<Images />} />
-          <Route path='/images/:imageId' element={<ImageDetail />} />
-          <Route path="subscriptions" element={<Subscriptions />} />
-          <Route path="subscriptions/:subId" element={<SubDetail />} />
-          <Route path="shorts" element={<Shorts />} />
-          <Route path="shorts/:shortId" element={<ShortDetail />} />
-          <Route path="users" element={<Users />} />
-        </Route>
+                    <Route path='/images' element={<Images />} />
+                    <Route path='/images/:imageId' element={<ImageDetail />} />
+                    <Route path="subscriptions" element={<Subscriptions />} />
+                    <Route path="subscriptions/:subId" element={<SubDetail />} />
+                    <Route path="shorts" element={<Shorts />} />
+                    <Route path="shorts/:shortId" element={<ShortDetail />} />
+                    <Route path="users" element={<Users />} />
+                    <Route path="products?/:productId" element={<Products />} />
+                  </Route>
+              </Route>
             </Routes>
         </BrowserRouter>
     );

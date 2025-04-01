@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom"; 
 import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, Typography, Rating } from '@mui/material';
 import { ProductDetails } from "./ProductDetails";
@@ -21,14 +21,13 @@ function Products() {
 
   const handleDetailsOpen = (productId) => {
     setIsDetailedOpened(true);
-    navigate(`/products/${product.id}`);
+    navigate(`/products/${productId}`);
   };
 
   const handleDetailsClose = () => {
     setIsDetailedOpened(false);
+    navigate('/products');
   };
-
-  console.log(products);
 
   return (
     <div>
@@ -46,6 +45,7 @@ function Products() {
               <TableCell align="center">Price</TableCell>
             </TableRow>
           </TableHead>
+
           <TableBody>
             {products.map((product) => (
               <TableRow
@@ -56,6 +56,7 @@ function Products() {
                 <TableCell component="th" scope="row">
                   <img src={product.thumbnail} width="80px" height="80px" alt={product.title} />
                 </TableCell>
+
                 <TableCell align="left">{product.title}</TableCell>
                 <TableCell align="center">{product.sku}</TableCell>
                 <TableCell align="center">{product.stock}</TableCell>
@@ -76,6 +77,6 @@ function Products() {
       />
     </div>
   );
-}
+};
 
 export default Products;

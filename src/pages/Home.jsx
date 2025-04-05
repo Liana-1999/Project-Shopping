@@ -1,43 +1,20 @@
-import { Fragment, useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { AuthContext } from '../context/auth/AuthContext';
-import { Divider } from '@mui/material';
+import { Typography, Box } from '@mui/material';
 
 export const Home = () => {
-    const { user } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
-    const [users, setUsers] = useState([]);
-
-    useEffect(() => {
-        fetch('https://dummyjson.com/users')
-            .then(res => res.json())
-            .then((usersResponse) => {
-                setUsers(usersResponse.users);
-            });
-    }, []);
-
-    return (
-        <section>
-            <p>This is Home Page</p>
-
-            <div>
-                <h3>User Information</h3>
-
-                <div>
-                    {users.map((user) => (
-                        <Fragment key={user.id}>
-                            <div>
-                                <p>User Name: {user.firstName}</p>
-                                <p>User Age: {user.age}</p>
-                                <p>User Gender: {user.gender}</p>
-                            </div>
-
-                            <Divider />
-                        </Fragment>
-                    ))}
-                </div>
-
-                
-            </div>
-        </section>
-    );
+  return (
+    <Box sx={{ p: 2 }}>
+      <Typography variant="h3" sx={{ mb: 2 }}>Home Page</Typography>
+      <Typography variant="body1">Welcome to our homepage!</Typography>
+      
+      {user && (
+        <Box sx={{ mt: 2 }}>
+          <Typography variant="h6">Logged in as: {user.firstName}</Typography>
+        </Box>
+      )}
+    </Box>
+  );
 };

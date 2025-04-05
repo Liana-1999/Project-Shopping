@@ -12,7 +12,8 @@ import SubDetail from "../pages/SubDetail";
 import { Shorts } from "../pages/Shorts";
 import ShortDetail from "../pages/ShortDetail";
 import Products from '../pages/products/Products';
-import Users from "../pages/Users";
+import Users from "../pages/Users/Users";
+import UsersDetails from "../pages/Users/UsersDetails";
 
 import { PrivateRoutes } from './PrivateRoutes';
 import { PublicRoutes } from './PublicRoutes';
@@ -25,7 +26,7 @@ export const Routing = () => {
                     <Route path="signin" element={<SignIn />} />
                   </Route>
 
-                <Route path="/" element={<MainLayout />}>
+                 <Route path="/" element={<MainLayout />}>
                   <Route element={<PrivateRoutes />}>
                     <Route index element={<Home />} />
 
@@ -34,14 +35,14 @@ export const Routing = () => {
                     <Route path='/images' element={<Images />} />
                     <Route path='/images/:imageId' element={<ImageDetail />} />
                     <Route path="subscriptions" element={<Subscriptions />} />
-                    <Route path="subscriptions/:subId" element={<SubDetail />} />
-                    <Route path="shorts" element={<Shorts />} />
-                    <Route path="shorts/:shortId" element={<ShortDetail />} />
-                    <Route path="users" element={<Users />} />
-                    <Route path="products?/:productId" element={<Products />} />
+                    <Route path="/subscriptions/:subId" element={<SubDetail />} />
+                    <Route path="/shorts" element={<Shorts />} />
+                    <Route path="/shorts/:shortId" element={<ShortDetail />} />
+                    <Route path="/products/:productId?" element={<Products />} />
+                    <Route path="/users/:userId?" element={<Users />} />
                   </Route>
               </Route>
-            </Routes>
+            </Routes> 
         </BrowserRouter>
     );
 };

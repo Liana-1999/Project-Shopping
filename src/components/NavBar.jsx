@@ -1,11 +1,13 @@
-import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import React, { useContext } from "react";
 import { AuthContext } from "../context/auth/AuthContext";
-import { AppBar, Box, Button, Typography } from "@mui/material";
 import LogoutIcon from '@mui/icons-material/Logout';
+
+import { AppBar, Box, Button, Typography } from "@mui/material";
 
 const pages = [
   { text: "Home", link: "/" },
+  { text: "Images", link: "/images" },
   { text: "Shorts", link: "/shorts" },
   { text: "Subscriptions", link: "/subscriptions" },
   { text: "Products", link: "/products" },
@@ -14,6 +16,7 @@ const pages = [
 
 function NavBar() {
   const navigate = useNavigate();
+
   const { signOut, user } = useContext(AuthContext);
 
   const handlePageChange = (link) => {
@@ -30,10 +33,10 @@ function NavBar() {
             </Button>
           ))}
         </Box>
+
         <Box sx={{ display: "flex", alignItems: "center" }}>
-          <Typography variant="subtitle1" fontWeight="bold">
-            {user?.firstName || "Guest"}
-          </Typography>
+          <Typography variant="subtitle1" fontWeight="bold">{user?.firstName || "Guest"}</Typography>
+          
           <Button onClick={signOut} color="inherit" sx={{ ml: 1 }}>
             <LogoutIcon />
           </Button>

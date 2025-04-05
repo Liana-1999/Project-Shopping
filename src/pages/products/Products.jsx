@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom"; 
-import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, Typography, Rating } from '@mui/material';
+import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, Typography, Drawer, Box, Rating } from '@mui/material';
 import { ProductDetails } from "./ProductDetails";
 
 function Products() {
   const [isDetailsOpened, setIsDetailedOpened] = useState(false);
 
   const [products, setProducts] = useState([]);
+
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const { productId } = useParams();
 
   const navigate = useNavigate();
   const params = useParams(); 
@@ -70,11 +73,13 @@ function Products() {
         </Table>
       </TableContainer>
 
-      <ProductDetails 
-        productId={params.productId} 
-        open={isDetailsOpened}
-        onClose={handleDetailsClose}
-      />
+      {params.productId && (
+        <ProductDetails 
+          productId={params.productId} 
+          open={isDetailsOpened}
+          onClose={handleDetailsClose}
+        />
+      )}
     </div>
   );
 };

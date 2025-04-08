@@ -1,7 +1,8 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import React, { useContext } from "react";
 import { AuthContext } from "../context/auth/AuthContext";
 import LogoutIcon from '@mui/icons-material/Logout';
+import PersonIcon from '@mui/icons-material/Person';
 
 import { AppBar, Box, Button, Typography } from "@mui/material";
 
@@ -35,11 +36,9 @@ function NavBar() {
         </Box>
 
         <Box sx={{ display: "flex", alignItems: "center" }}>
-          <Typography variant="subtitle1" fontWeight="bold">{user?.firstName || "Guest"}</Typography>
+          <PersonIcon sx={{ cursor: 'pointer' }} onClick={() => navigate('/myprofile')} />
           
-          <Button onClick={signOut} color="inherit" sx={{ ml: 1 }}>
-            <LogoutIcon />
-          </Button>
+          <LogoutIcon sx={{marginLeft: '8px', cursor: 'pointer' }} color='white' onClick={signOut}/>
         </Box>
       </Box>
     </AppBar>

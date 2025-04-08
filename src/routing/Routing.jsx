@@ -13,7 +13,6 @@ import { Shorts } from "../pages/Shorts";
 import ShortDetail from "../pages/ShortDetail";
 import Products from '../pages/products/Products';
 import Users from "../pages/Users/Users";
-import UsersDetails from "../pages/Users/UsersDetails";
 
 import { PrivateRoutes } from './PrivateRoutes';
 import { PublicRoutes } from './PublicRoutes';
@@ -30,8 +29,6 @@ export const Routing = () => {
                   <Route element={<PrivateRoutes />}>
                     <Route index element={<Home />} />
 
-                    <Route path="myprofile" element={<MyProfile />} />
-
                     <Route path='/images' element={<Images />} />
                     <Route path='/images/:imageId' element={<ImageDetail />} />
                     <Route path="subscriptions" element={<Subscriptions />} />
@@ -40,6 +37,7 @@ export const Routing = () => {
                     <Route path="/shorts/:shortId" element={<ShortDetail />} />
                     <Route path="/products/:productId?" element={<Products />} />
                     <Route path="/users/:userId?" element={<Users />} />
+                    <Route path="/myprofile" element={<MyProfile />} />
                   </Route>
               </Route>
             </Routes> 

@@ -9,7 +9,7 @@ function Products() {
   const { products } = useSelector((store) => store.products);
   const dispatch = useDispatch();
 
-  const [isDetailsOpened, setIsDetailedOpened] = useState(false);
+  const [isDetailsOpened, setIsDetailsOpened] = useState(false);
 
   const [selectedProduct, setSelectedProduct] = useState(null);
   const { productId } = useParams();
@@ -26,12 +26,12 @@ function Products() {
   }, []);
 
   const handleDetailsOpen = (productId) => {
-    setIsDetailedOpened(true);
+    setIsDetailsOpened(true);
     navigate(`/products/${productId}`);
   };
 
   const handleDetailsClose = () => {
-    setIsDetailedOpened(false);
+    setIsDetailsOpened(false);
     navigate('/products');
   };
 

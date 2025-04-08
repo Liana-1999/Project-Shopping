@@ -1,18 +1,23 @@
 import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Box, Typography, Grid, Card, CardMedia, CardContent, Drawer, CircularProgress } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
 import UsersDetails from "../Users/UsersDetails";
+import { usersActions } from '../../store/slice/usersSlice';
 
 function Users() {
+  const { users } = useSelector((store) => store.users);
+  const dispatch = useDispatch();
+
   const navigate = useNavigate();
   const { userId } = useParams();
-  const [users, setUsers] = useState([]);
+  // const [users, setUsers] = useState([]);
 
   useEffect(() => {
     fetch("https://dummyjson.com/users")
       .then((res) => res.json())
       .then((data) => {
-        setUsers(data.users);
+        dispatch(usersActions.addUsers(data.users));
       })
       .catch((error) => {
         console.error("Error fetching users:", error);
